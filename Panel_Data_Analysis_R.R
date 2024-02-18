@@ -43,19 +43,25 @@ d18=as.numeric(if_else(pdata$기준연도==2018L,1,0))
 
 year=cbind(d08,d09,d10,d11,d12,d13,d15,d16,d17,d18)
 
-
+############### Normal Plot ###########
 a= pdata%>%filter(treat==1)%>%group_by(기준연도)%>%summarise(고용성장률평균=mean(GR_EMPtp1))
 b= pdata%>%filter(treat==0)%>%group_by(기준연도)%>%summarise(고용성장률평균=mean(GR_EMPtp1))
 c= pdata%>%group_by(기준연도)%>%summarise(평균=mean(GR_EMPtp1))
-
-pdata$characteristic <- factor(pdata$기준연도)
-pdata$treat_factor <- factor(pdata$treat)
-
 plot(ts(b[,2]), type='l', ylim=c(-0.2,0.2))
 lines(ts(a[,2]), col='red', type='o')
 lines(ts(c[,2]), col='blue', type='o')
 
 abline(v=7)
+#######3 with ggplot2 #########
+
+pdata %>%
+    group_by(기준연도, treat) %>%
+    summarise(mean_GR_EMPtp1 = mean(GR_EMPtp1)) %>%
+    ggplot(aes(x = 기준연도, y = mean_GR_EMPtp1, col = as.factor(treat))) +
+    geom_point() +
+    geom_line(aes(group = treat)) +  # Use group = treat to connect lines for each treat group
+    geom_vline(xintercept = 7, color = "black") +
+    coord_cartesian(ylim = c(-0.2, 0.2)) 
 
 ##### 더미 = 1 비율 구하기
 a= pdata%>%filter(treat==0)%>%group_by(기준연도)%>%count()
