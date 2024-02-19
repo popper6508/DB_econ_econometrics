@@ -4,7 +4,7 @@
 
 ------
 <p>일부 데이터는 크기가 크기 때문에 Github에 업로드하지 못했습니다.<br>
-----
+-----
 업로드를 하지 못한 데이터 목록<br>
 - KFS_Panel_2010_2020.xlsx<br>
 - KFS_panel_with_threeyearsales.xlsx</p>
