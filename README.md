@@ -4,7 +4,7 @@
 - 팀원: 김겨레 심우석 <br>
 - 주제: 기업 규모에 따른 차등정책과 중소기업의 성장성
 - Topic: the impact of legal regulations on firm size and support on firm growth)  
-- **Grand Prize Winner**
+- Grand Prize Winner
 
 ---------
 <p>일부 데이터는 크기가 크기 때문에 Github에 업로드하지 못했습니다.</p>
